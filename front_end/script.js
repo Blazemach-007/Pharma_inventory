@@ -27,6 +27,6 @@ document.getElementById('generateButton').addEventListener('click', () => {
 });
 
 // Load the home section by default
-window.onload = function() {
-    showSection('home');
-};
+// window.onload = function() {
+//     showSection('home');
+// };

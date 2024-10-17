@@ -1,15 +1,11 @@
 from flask_sqlalchemy import SQLAlchemy
 from sqlalchemy import ForeignKey
-import random
-import string
 import uuid
 
 db = SQLAlchemy()
 
-
 def generate_random_id():
     return str(uuid.uuid4())
-
 
 class DoctorDetails(db.Model):
     __tablename__ = 'doctor_details'
@@ -42,11 +38,17 @@ class PharmacyStore(db.Model):
     email = db.Column(db.String(255))
     manager_name = db.Column(db.String(255))
 
+class Medicines(db.Model):
+    __tablename__ = 'medicines'
+    medicine_id = db.Column(db.String(36), primary_key=True, default=generate_random_id)
+    name = db.Column(db.String(100), nullable=False)
+    expiration_date = db.Column(db.Date, nullable=False)
+    cost = db.Column(db.Numeric(10, 2), nullable=False)
+
 class InventoryManagement(db.Model):
     __tablename__ = 'inventory_management'
-
     id = db.Column(db.String(36), primary_key=True, default=generate_random_id)
-    medicine_name = db.Column(db.String(100), nullable=False)
+    medicine_id = db.Column(db.String(36), ForeignKey('medicines.medicine_id'))
     quantity = db.Column(db.Integer, nullable=False)
     price_per_unit = db.Column(db.Numeric(10, 2), nullable=False)
 
@@ -59,12 +61,23 @@ class PrescriptionDetails(db.Model):
     prescription_id = db.Column(db.Integer, primary_key=True)
     doctor_id = db.Column(db.Integer, ForeignKey('doctor_details.doctor_id'))
     patient_id = db.Column(db.Integer, ForeignKey('patient_details.patient_id'))
-    medicine_name = db.Column(db.String(255))
+    medicine_id = db.Column(db.String(36), ForeignKey('medicines.medicine_id'))
     dosage = db.Column(db.String(100))
     frequency = db.Column(db.String(100))
     start_date = db.Column(db.Date)
     end_date = db.Column(db.Date)
 
-# Function to generate random primary key
-def generate_random_id(length=8):
-    return ''.join(random.choices(string.ascii_letters + string.digits, k=length))
+class Sales(db.Model):
+    __tablename__ = 'sales'
+    sale_id = db.Column(db.String(36), primary_key=True, default=generate_random_id)
+    medicine_id = db.Column(db.String(36), ForeignKey('medicines.medicine_id'))
+    quantity = db.Column(db.Integer, nullable=False)
+    total_amount = db.Column(db.Numeric(10, 2), nullable=False)
+
+class UserAuthentication(db.Model):
+    __tablename__ = 'user_authentication'
+    user_id = db.Column(db.String(36), primary_key=True, default=generate_random_id)
+    username = db.Column(db.String(255), nullable=False, unique=True)
+    phone_number = db.Column(db.String(20), unique=True, nullable=False)
+    password = db.Column(db.String(255), nullable=False)
+    admin = db.Column(db.Boolean, default=False)

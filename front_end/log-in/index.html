@@ -25,7 +25,7 @@
             <h2 class="title animation" style="--i:0; --j:21">Login</h2>
             <form action="#">
 
-                <div class="input-box animation" style="--i:1; --j:22">
+                <!-- <div class="input-box animation" style="--i:1; --j:22">
                     <input type="text" required>
                     <label for="">Username</label>
                     <i class='bx bxs-user'></i>
@@ -35,24 +35,42 @@
                     <input type="password" required>
                     <label for="">Password</label>
                     <i class='bx bxs-lock-alt'></i>
+                </div> -->
+                <div class="input-box animation" style="--i:18; --j:1">
+                    <input type="text" required>
+                    <label for="">Username</label>
+                    <i class='bx bxs-user'></i>
                 </div>
-                <button type="submit" class="btn animation" style="--i:3; --j:24">Login</button>
+
+                <div class="input-box animation" style="--i:19; --j:2">
+                    <input type="text" required>
+                    <label for="">Phone</label>
+                    <i class='bx bxs-phone-call'></i>
+                </div>
+
+                <div class="input-box animation" style="--i:20; --j:3">
+                    <input type="password" required>
+                    <label for="">Password</label>
+                    <i class='bx bxs-lock-alt'></i>
+                </div>
+
+                <button type="submit" id="pharma-login" class="btn animation" style="--i:3; --j:24">Login</button>
                 <div class="linkTxt animation" style="--i:5; --j:25">
-                    <p>Don't have an account? <a href="#" class="register-link">Sign Up</a></p>
+                    <p>Are an <a href="#" class="register-link">Administrator</a> ? </p>
                 </div>
             </form>
         </div>
 
         <div class="info-text login">
-            <h2 class="animation" style="--i:0; --j:20">Welcome Back!</h2>
-            <p class="animation" style="--i:1; --j:21">...............................................</p>
+            <h2 class="animation" style="--i:0; --j:20">Welcome</h2>
+            <p class="animation" style="--i:1; --j:21">Pharmacy Managers</p>
         </div>
 
 <!-- The other side -->
 
         <div class="form-box register">
 
-            <h2 class="title animation" style="--i:17; --j:0">Sign Up</h2>
+            <h2 class="title animation" style="--i:17; --j:0">Login</h2>
 
             <form action="#">
 
@@ -63,9 +81,9 @@
                 </div>
 
                 <div class="input-box animation" style="--i:19; --j:2">
-                    <input type="email" required>
-                    <label for="">Email</label>
-                    <i class='bx bxs-envelope'></i>
+                    <input type="text" required>
+                    <label for="">Phone</label>
+                    <i class='bx bxs-phone-call'></i>
                 </div>
 
                 <div class="input-box animation" style="--i:20; --j:3">
@@ -74,10 +92,10 @@
                     <i class='bx bxs-lock-alt'></i>
                 </div>
 
-                <button type="submit" class="btn animation" style="--i:21;--j:4">Sign Up</button>
+                <button type="submit" id="admin-login" class="btn animation" style="--i:21;--j:4">Login</button>
 
                 <div class="linkTxt animation" style="--i:22; --j:5">
-                    <p>Already have an account? <a href="#" class="login-link">Login</a></p>
+                    <p>Are you a <a href="#" class="login-link">Pharmacy Manager</a> ? </p>
                 </div>
 
             </form>
@@ -85,7 +103,7 @@
 
         <div class="info-text register">
             <h2 class="animation" style="--i:17; --j:0;">Welcome</h2>
-            <p class="animation" style="--i:18; --j:1;">testing pharmaceutical</p>
+            <p class="animation" style="--i:18; --j:1;">Administrator</p>
         </div>
 
     </div>
